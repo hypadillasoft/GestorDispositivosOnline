@@ -47,12 +47,15 @@
     <Compile Include="EntityFramework\Dispositivos.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
+    <Compile Include="EntityFramework\Empresas.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
     <Compile Include="EntityFramework\Modelo.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
-    <Compile Include="EntityFramework\Personas.cs">
+    <Compile Include="EntityFramework\Operaciones.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
     <Compile Include="EntityFramework\Usuarios.cs">

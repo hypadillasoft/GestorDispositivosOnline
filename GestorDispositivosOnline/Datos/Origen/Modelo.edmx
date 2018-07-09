@@ -15,20 +15,37 @@
           <Property Name="Delimitador" Type="nchar" MaxLength="1" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="500" />
         </EntityType>
-        <EntityType Name="Personas">
+        <EntityType Name="Empresas">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="idPadre" Type="bigint" />
-          <Property Name="idHijo1" Type="bigint" />
-          <Property Name="idHijo2" Type="bigint" />
-          <Property Name="clave" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="FechaCreacion" Type="date" Nullable="false" />
-          <Property Name="Nombre" Type="varchar" MaxLength="500" Nullable="false" />
-          <Property Name="Cel" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="Nota" Type="text" />
-          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="Nit" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="RazonSocial" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="20" />
+          <Property Name="Direccion" Type="varchar" MaxLength="500" />
+          <Property Name="Email" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Operaciones">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idDispositvo" Type="bigint" Nullable="false" />
+          <Property Name="Texto" Type="text" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Hogar2.dbo.tabla_prueba' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="tabla_prueba">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="nombre" />
+            <PropertyRef Name="Apellido" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Apellido" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Usuarios">
           <Key>
@@ -39,34 +56,89 @@
           <Property Name="Nombre" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="Password" Type="varchar(max)" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Dispositivos_Empresas">
+          <End Role="Empresas" Type="Self.Empresas" Multiplicity="1" />
+          <End Role="Dispositivos" Type="Self.Dispositivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Dispositivos">
+              <PropertyRef Name="idEmpresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Operaciones_Dispositivos">
+          <End Role="Dispositivos" Type="Self.Dispositivos" Multiplicity="1" />
+          <End Role="Operaciones" Type="Self.Operaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dispositivos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Operaciones">
+              <PropertyRef Name="idDispositvo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuarios_Empresas">
+          <End Role="Empresas" Type="Self.Empresas" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="idEmpresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Hogar2ModelStoreContainer">
           <EntitySet Name="Dispositivos" EntityType="Self.Dispositivos" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Personas" EntityType="Self.Personas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empresas" EntityType="Self.Empresas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Operaciones" EntityType="Self.Operaciones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tabla_prueba" EntityType="Self.tabla_prueba" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tabla_prueba].[id] AS [id], 
+    [tabla_prueba].[nombre] AS [nombre], 
+    [tabla_prueba].[Apellido] AS [Apellido]
+    FROM [dbo].[tabla_prueba] AS [tabla_prueba]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Dispositivos_Empresas" Association="Self.FK_Dispositivos_Empresas">
+            <End Role="Empresas" EntitySet="Empresas" />
+            <End Role="Dispositivos" EntitySet="Dispositivos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Operaciones_Dispositivos" Association="Self.FK_Operaciones_Dispositivos">
+            <End Role="Dispositivos" EntitySet="Dispositivos" />
+            <End Role="Operaciones" EntitySet="Operaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuarios_Empresas" Association="Self.FK_Usuarios_Empresas">
+            <End Role="Empresas" EntitySet="Empresas" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Hogar2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Personas">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idPadre" Type="Int64" />
-          <Property Name="idHijo1" Type="Int64" />
-          <Property Name="idHijo2" Type="Int64" />
-          <Property Name="clave" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Nombre" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Cel" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Nota" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Estado" Type="Boolean" Nullable="false" />
-        </EntityType>
         <EntityContainer Name="Hogar2Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Personas" EntityType="Self.Personas" />
           <EntitySet Name="Dispositivos" EntityType="Hogar2Model.Dispositivos" />
           <EntitySet Name="Usuarios" EntityType="Hogar2Model.Usuarios" />
+          <EntitySet Name="Empresas" EntityType="Hogar2Model.Empresas" />
+          <EntitySet Name="Operaciones" EntityType="Hogar2Model.Operaciones" />
+          <AssociationSet Name="FK_Dispositivos_Empresas" Association="Hogar2Model.FK_Dispositivos_Empresas">
+            <End Role="Empresas" EntitySet="Empresas" />
+            <End Role="Dispositivos" EntitySet="Dispositivos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Operaciones_Dispositivos" Association="Hogar2Model.FK_Operaciones_Dispositivos">
+            <End Role="Dispositivos" EntitySet="Dispositivos" />
+            <End Role="Operaciones" EntitySet="Operaciones" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuarios_Empresas" Association="Hogar2Model.FK_Usuarios_Empresas">
+            <End Role="Empresas" EntitySet="Empresas" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <EntitySet Name="tabla_prueba" EntityType="Hogar2Model.tabla_prueba" />
         </EntityContainer>
         <EntityType Name="Dispositivos">
           <Key>
@@ -77,6 +149,8 @@
           <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Delimitador" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="true" />
           <Property Name="Descripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Empresas" Relationship="Hogar2Model.FK_Dispositivos_Empresas" FromRole="Dispositivos" ToRole="Empresas" />
+          <NavigationProperty Name="Operaciones" Relationship="Hogar2Model.FK_Operaciones_Dispositivos" FromRole="Dispositivos" ToRole="Operaciones" />
         </EntityType>
         <EntityType Name="Usuarios">
           <Key>
@@ -86,6 +160,76 @@
           <Property Name="idEmpresa" Type="Int64" Nullable="false" />
           <Property Name="Nombre" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Empresas" Relationship="Hogar2Model.FK_Usuarios_Empresas" FromRole="Usuarios" ToRole="Empresas" />
+        </EntityType>
+        <EntityType Name="Empresas">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nit" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RazonSocial" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Dispositivos" Relationship="Hogar2Model.FK_Dispositivos_Empresas" FromRole="Empresas" ToRole="Dispositivos" />
+          <NavigationProperty Name="Usuarios" Relationship="Hogar2Model.FK_Usuarios_Empresas" FromRole="Empresas" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Operaciones">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idDispositvo" Type="Int64" Nullable="false" />
+          <Property Name="Texto" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Dispositivos" Relationship="Hogar2Model.FK_Operaciones_Dispositivos" FromRole="Operaciones" ToRole="Dispositivos" />
+        </EntityType>
+        <Association Name="FK_Dispositivos_Empresas">
+          <End Type="Hogar2Model.Empresas" Role="Empresas" Multiplicity="1" />
+          <End Type="Hogar2Model.Dispositivos" Role="Dispositivos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Dispositivos">
+              <PropertyRef Name="idEmpresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Operaciones_Dispositivos">
+          <End Type="Hogar2Model.Dispositivos" Role="Dispositivos" Multiplicity="1" />
+          <End Type="Hogar2Model.Operaciones" Role="Operaciones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Dispositivos">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Operaciones">
+              <PropertyRef Name="idDispositvo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuarios_Empresas">
+          <End Type="Hogar2Model.Empresas" Role="Empresas" Multiplicity="1" />
+          <End Type="Hogar2Model.Usuarios" Role="Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresas">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="idEmpresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tabla_prueba">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="nombre" />
+            <PropertyRef Name="Apellido" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Apellido" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -93,22 +237,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Hogar2ModelStoreContainer" CdmEntityContainer="Hogar2Entities">
-          <EntitySetMapping Name="Personas">
-            <EntityTypeMapping TypeName="Hogar2Model.Personas">
-              <MappingFragment StoreEntitySet="Personas">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="idPadre" ColumnName="idPadre" />
-                <ScalarProperty Name="idHijo1" ColumnName="idHijo1" />
-                <ScalarProperty Name="idHijo2" ColumnName="idHijo2" />
-                <ScalarProperty Name="clave" ColumnName="clave" />
-                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
-                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
-                <ScalarProperty Name="Cel" ColumnName="Cel" />
-                <ScalarProperty Name="Nota" ColumnName="Nota" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Dispositivos">
             <EntityTypeMapping TypeName="Hogar2Model.Dispositivos">
               <MappingFragment StoreEntitySet="Dispositivos">
@@ -126,6 +254,37 @@
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="idEmpresa" ColumnName="idEmpresa" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empresas">
+            <EntityTypeMapping TypeName="Hogar2Model.Empresas">
+              <MappingFragment StoreEntitySet="Empresas">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="RazonSocial" ColumnName="RazonSocial" />
+                <ScalarProperty Name="Nit" ColumnName="Nit" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Operaciones">
+            <EntityTypeMapping TypeName="Hogar2Model.Operaciones">
+              <MappingFragment StoreEntitySet="Operaciones">
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Texto" ColumnName="Texto" />
+                <ScalarProperty Name="idDispositvo" ColumnName="idDispositvo" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tabla_prueba">
+            <EntityTypeMapping TypeName="Hogar2Model.tabla_prueba">
+              <MappingFragment StoreEntitySet="tabla_prueba">
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

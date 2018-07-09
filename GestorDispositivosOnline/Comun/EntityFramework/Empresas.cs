@@ -12,22 +12,25 @@ namespace Comun.EntityFramework
     using System;
     using System.Collections.Generic;
     
-    public partial class Dispositivos
+    public partial class Empresas
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Dispositivos()
+        public Empresas()
         {
-            this.Operaciones = new HashSet<Operaciones>();
+            this.Dispositivos = new HashSet<Dispositivos>();
+            this.Usuarios = new HashSet<Usuarios>();
         }
     
         public long id { get; set; }
-        public long idEmpresa { get; set; }
-        public string Nombre { get; set; }
-        public string Delimitador { get; set; }
-        public string Descripcion { get; set; }
+        public string Nit { get; set; }
+        public string RazonSocial { get; set; }
+        public string Telefono { get; set; }
+        public string Direccion { get; set; }
+        public string Email { get; set; }
     
-        public virtual Empresas Empresas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Operaciones> Operaciones { get; set; }
+        public virtual ICollection<Dispositivos> Dispositivos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Usuarios> Usuarios { get; set; }
     }
 }

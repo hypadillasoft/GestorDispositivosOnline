@@ -12,13 +12,13 @@ namespace Comun.EntityFramework
     using System;
     using System.Collections.Generic;
     
-    public partial class Usuarios
+    public partial class Operaciones
     {
         public long id { get; set; }
-        public long idEmpresa { get; set; }
-        public string Nombre { get; set; }
-        public string Password { get; set; }
+        public long idDispositvo { get; set; }
+        public string Texto { get; set; }
+        public System.DateTime Fecha { get; set; }
     
-        public virtual Empresas Empresas { get; set; }
+        public virtual Dispositivos Dispositivos { get; set; }
     }
 }

@@ -25,8 +25,10 @@ namespace Comun.EntityFramework
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Personas> Personas { get; set; }
         public virtual DbSet<Dispositivos> Dispositivos { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
+        public virtual DbSet<Empresas> Empresas { get; set; }
+        public virtual DbSet<Operaciones> Operaciones { get; set; }
+        public virtual DbSet<tabla_prueba> tabla_prueba { get; set; }
     }
 }

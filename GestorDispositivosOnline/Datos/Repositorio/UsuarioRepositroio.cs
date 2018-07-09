@@ -12,7 +12,7 @@ namespace Datos.Repositorio
     {
         public object Guardar(object Parametro)
         {
-            
+            return null;
         }
     }
 }
