@@ -58,6 +58,9 @@
     <Compile Include="EntityFramework\Operaciones.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
+    <Compile Include="EntityFramework\tabla_prueba.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
     <Compile Include="EntityFramework\Usuarios.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
