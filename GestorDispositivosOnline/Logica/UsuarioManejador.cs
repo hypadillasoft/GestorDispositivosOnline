@@ -10,10 +10,10 @@ namespace Logica
 {
     public class UsuarioManejador
     {
-        private readonly UsuarioFachada fachada;
+        private readonly UsuarioFachada interfaz;
         public UsuarioManejador()
         {
-            fachada = new UsuarioFachada();
+            interfaz = new UsuarioFachada();
         }
         public object Guardar(object Parametro)
         {
@@ -29,7 +29,7 @@ namespace Logica
                 return "No puedes ingresar un password vacío.";
             }
 
-            return fachada.Guardar(Parametro);
+            return interfaz.Guardar(Parametro);
         }
     }
 }

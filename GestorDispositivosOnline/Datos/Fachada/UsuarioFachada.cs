@@ -14,7 +14,7 @@ namespace Datos.Fachada
         private readonly IUsuario interfaz;
         public UsuarioFachada()
         {
-            interfaz = new UsuarioRepositorio();
+            interfaz = new UsuarioRepositroio();
         }
         public object Guardar(object Parametro)
         {
@@ -23,8 +23,8 @@ namespace Datos.Fachada
             {
                 return "Ingresaste más de 10 caracteres.";
             }
-
-            return interfaz.Guardar(Parametro);
+            
+            return interfaz.Guardar(Parametro); 
         }
     }
 }

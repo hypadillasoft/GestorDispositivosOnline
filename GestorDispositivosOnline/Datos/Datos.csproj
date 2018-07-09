@@ -53,17 +53,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <Compile Include="Fachada\DispositivoFachada.cs" />
     <Compile Include="Fachada\EmpresaFachada.cs" />
-=======
-    <Compile Include="Fachada\OperacionFachada.cs" />
->>>>>>> 266c7c1e5639cbb2bcfd5669f7c7927b80bda2cb
     <Compile Include="Fachada\UsuarioFachada.cs" />
     <Compile Include="Interface\IDispositivo.cs" />
     <Compile Include="Interface\IEmpresa.cs" />
     <Compile Include="Interface\IGeneral.cs" />
-    <Compile Include="Interface\IOperacion.cs" />
     <Compile Include="Interface\IUsuario.cs" />
     <Compile Include="Origen\Modelo.Context.cs">
       <AutoGen>True</AutoGen>
@@ -77,14 +72,9 @@
       <DependentUpon>Modelo.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-<<<<<<< HEAD
     <Compile Include="Repositorio\DispositivoRepositorio.cs" />
     <Compile Include="Repositorio\EmpresaRepositorio.cs" />
     <Compile Include="Repositorio\UsuarioRepositroio.cs" />
-=======
-    <Compile Include="Repositorio\OperacionRepositorio.cs" />
-    <Compile Include="Repositorio\UsuarioRepositorio.cs" />
->>>>>>> 266c7c1e5639cbb2bcfd5669f7c7927b80bda2cb
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

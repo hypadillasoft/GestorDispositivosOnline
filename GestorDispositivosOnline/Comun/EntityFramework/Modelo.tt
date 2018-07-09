@@ -2,7 +2,7 @@
 <#@ include file="EF6.Utility.CS.ttinclude"#><#@ 
  output extension=".cs"#><#
 
-const string inputFile = @"C:\Users\Hypadilla\Source\Workspaces\GestorDispositivosOnline\GestorDispositivosOnline\Datos\Origen\Modelo.edmx";
+const string inputFile = @"C:\Users\parva\Documents\GitHub\GestorDispositivosOnline\GestorDispositivosOnline\Datos\Origen\Modelo.edmx";
 
 var textTransform = DynamicTextTransformation.Create(this);
 var code = new CodeGenerationTools(this);

@@ -44,11 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <Compile Include="DispositivoManejador.cs" />
-=======
-    <Compile Include="OperacionManejador.cs" />
->>>>>>> 266c7c1e5639cbb2bcfd5669f7c7927b80bda2cb
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UsuarioManejador.cs" />
   </ItemGroup>

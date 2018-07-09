@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Datos.Repositorio
 {
-    internal class UsuarioRepositorio : IUsuario
+    internal class UsuarioRepositroio : IUsuario
     {
         public object Guardar(object Parametro)
         {
