@@ -1,0 +1,112 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Comun", "1. Comun", "{44F6A6FF-5D51-4DA7-B9EE-C990CCE64E2C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Comun", "Comun\Comun.csproj", "{BBD15F77-00B5-45AA-8044-DDE37D69E891}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilidades", "Utilidades\Utilidades.csproj", "{006BB426-C7C2-420B-8BDE-2A5663EFBBF9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. Datos", "2. Datos", "{BA72663F-2974-4D8B-9BF2-A220AD8459D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Datos", "Datos\Datos.csproj", "{C9939240-6A18-4713-AD96-5303B1024FCA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Logica", "3. Logica", "{A952A6A3-D145-4D8F-B5A3-F08A149B8F23}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logica", "Logica\Logica.csproj", "{D0FC4374-3BA1-46CB-A17D-A48CE5567E91}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Presentacion", "4. Presentacion", "{4613D040-5A5D-4114-9D27-7A3E67700596}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{A45FFAB6-DF5E-4053-9D2C-114E87D1A75F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Escritorio", "Escritorio\Escritorio.csproj", "{B115A68D-42BC-4760-9FF6-CDC464C9B17C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{48773836-3FD3-4368-9321-F47C3A8215B3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BBD15F77-00B5-45AA-8044-DDE37D69E891}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBD15F77-00B5-45AA-8044-DDE37D69E891}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBD15F77-00B5-45AA-8044-DDE37D69E891}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBD15F77-00B5-45AA-8044-DDE37D69E891}.Release|Any CPU.Build.0 = Release|Any CPU
+		{006BB426-C7C2-420B-8BDE-2A5663EFBBF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{006BB426-C7C2-420B-8BDE-2A5663EFBBF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{006BB426-C7C2-420B-8BDE-2A5663EFBBF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{006BB426-C7C2-420B-8BDE-2A5663EFBBF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9939240-6A18-4713-AD96-5303B1024FCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9939240-6A18-4713-AD96-5303B1024FCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9939240-6A18-4713-AD96-5303B1024FCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9939240-6A18-4713-AD96-5303B1024FCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0FC4374-3BA1-46CB-A17D-A48CE5567E91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0FC4374-3BA1-46CB-A17D-A48CE5567E91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0FC4374-3BA1-46CB-A17D-A48CE5567E91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0FC4374-3BA1-46CB-A17D-A48CE5567E91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A45FFAB6-DF5E-4053-9D2C-114E87D1A75F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A45FFAB6-DF5E-4053-9D2C-114E87D1A75F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A45FFAB6-DF5E-4053-9D2C-114E87D1A75F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A45FFAB6-DF5E-4053-9D2C-114E87D1A75F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B115A68D-42BC-4760-9FF6-CDC464C9B17C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B115A68D-42BC-4760-9FF6-CDC464C9B17C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B115A68D-42BC-4760-9FF6-CDC464C9B17C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B115A68D-42BC-4760-9FF6-CDC464C9B17C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48773836-3FD3-4368-9321-F47C3A8215B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48773836-3FD3-4368-9321-F47C3A8215B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48773836-3FD3-4368-9321-F47C3A8215B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48773836-3FD3-4368-9321-F47C3A8215B3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BBD15F77-00B5-45AA-8044-DDE37D69E891} = {44F6A6FF-5D51-4DA7-B9EE-C990CCE64E2C}
+		{006BB426-C7C2-420B-8BDE-2A5663EFBBF9} = {44F6A6FF-5D51-4DA7-B9EE-C990CCE64E2C}
+		{C9939240-6A18-4713-AD96-5303B1024FCA} = {BA72663F-2974-4D8B-9BF2-A220AD8459D9}
+		{D0FC4374-3BA1-46CB-A17D-A48CE5567E91} = {A952A6A3-D145-4D8F-B5A3-F08A149B8F23}
+		{A45FFAB6-DF5E-4053-9D2C-114E87D1A75F} = {4613D040-5A5D-4114-9D27-7A3E67700596}
+		{B115A68D-42BC-4760-9FF6-CDC464C9B17C} = {4613D040-5A5D-4114-9D27-7A3E67700596}
+		{48773836-3FD3-4368-9321-F47C3A8215B3} = {4613D040-5A5D-4114-9D27-7A3E67700596}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AEC49CA4-16C1-4528-8B6C-2B526525823D}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 8
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://hypadilla.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Comun\\Comun.csproj
+		SccProjectTopLevelParentUniqueName1 = GestorDispositivosOnline.sln
+		SccProjectName1 = Comun
+		SccLocalPath1 = Comun
+		SccProjectUniqueName2 = Utilidades\\Utilidades.csproj
+		SccProjectTopLevelParentUniqueName2 = GestorDispositivosOnline.sln
+		SccProjectName2 = Utilidades
+		SccLocalPath2 = Utilidades
+		SccProjectUniqueName3 = Datos\\Datos.csproj
+		SccProjectTopLevelParentUniqueName3 = GestorDispositivosOnline.sln
+		SccProjectName3 = Datos
+		SccLocalPath3 = Datos
+		SccProjectUniqueName4 = Logica\\Logica.csproj
+		SccProjectTopLevelParentUniqueName4 = GestorDispositivosOnline.sln
+		SccProjectName4 = Logica
+		SccLocalPath4 = Logica
+		SccProjectUniqueName5 = API\\API.csproj
+		SccProjectTopLevelParentUniqueName5 = GestorDispositivosOnline.sln
+		SccProjectName5 = API
+		SccLocalPath5 = API
+		SccProjectUniqueName6 = Escritorio\\Escritorio.csproj
+		SccProjectTopLevelParentUniqueName6 = GestorDispositivosOnline.sln
+		SccProjectName6 = Escritorio
+		SccLocalPath6 = Escritorio
+		SccProjectUniqueName7 = Web\\Web.csproj
+		SccProjectTopLevelParentUniqueName7 = GestorDispositivosOnline.sln
+		SccProjectName7 = Web
+		SccLocalPath7 = Web
+	EndGlobalSection
+EndGlobal
